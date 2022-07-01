@@ -389,7 +389,24 @@ public:
 	}
 
 	anim_state* get_anim_state() {
-		return *reinterpret_cast<anim_state * *>(this + 0x3914);
+		return *reinterpret_cast<anim_state * *>(this + 0x9960);
+	}
+
+	anim_layer* anim_overlays() {
+		return *reinterpret_cast<anim_layer**>(reinterpret_cast<uintptr_t>(this) + 0x2990);
+	}
+
+	anim_layer* get_anim_layer(int overlay) {
+		return &anim_overlays()[overlay];
+	}
+
+	int get_anim_layer_count() {
+		return *reinterpret_cast<int*>(reinterpret_cast<uintptr_t>(this) + 0x299C);
+	}
+
+	std::array< float, 24 >& pose_parameter() {
+		static int pose_parameter = netvar_manager::get_net_var(fnv::hash("DT_BaseAnimating"), fnv::hash("m_flPoseParameter"));
+		return *reinterpret_cast<std::array<float, 24>*>(reinterpret_cast<uintptr_t>(this) + pose_parameter);
 	}
 
 	bool can_see_player_pos(player_t * player, const vec3_t & pos) {

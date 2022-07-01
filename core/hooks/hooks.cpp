@@ -56,10 +56,9 @@ static bool __stdcall create_move(float input_sample_frametime, c_usercmd* cmd, 
 	auto old_forwardmove = cmd->forwardmove;
 	auto old_sidemove = cmd->sidemove;
 
-	/*prediction::start(cmd); {
-	} prediction::end();*/
+	prediction::start(cmd); {
 
-	std::cout << "test" << "\n";
+	} prediction::end();
 
 	math::correct_movement(old_viewangles, cmd, old_forwardmove, old_sidemove);
 
