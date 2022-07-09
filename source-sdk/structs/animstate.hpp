@@ -50,7 +50,7 @@ public:
 	char pad8[4]; //NaN
 	float unkown_fraction; //0x124 affected while jumping and running, or when just jumping, 0 to 1
 	char pad9[4]; //NaN
-	float unkown_3;
+	float unkown__fraction_3;
 	char pad10[516];
 	float velocity_subtract_y;
 };
@@ -68,7 +68,7 @@ public:
 	float_t wieght_delat_rate; //0x0024
 	float_t playback_rate; //0x0028
 	float_t cycle; //0x002C
-	void* owener; //0x0030 // player's thisptr
+	void* owner; //0x0030 // player's thisptr
 	char  pad_0038[4]; //0x0034
 };
 
